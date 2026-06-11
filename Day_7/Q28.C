@@ -1,11 +1,16 @@
+
 #include <stdio.h>
 
-int sumDigits(int n)
-{
-    if (n == 0)
-        return 0;
+int reverse = 0;
 
-    return (n % 10) + sumDigits(n / 10);
+void reverseNumber(int num)
+{
+    if(num == 0)
+        return;
+
+    reverse = reverse * 10 + (num % 10);
+
+    reverseNumber(num / 10);
 }
 
 int main()
@@ -15,7 +20,9 @@ int main()
     printf("Enter a number: ");
     scanf("%d", &num);
 
-    printf("Sum of digits = %d", sumDigits(num));
+    reverseNumber(num);
+
+    printf("Reversed Number = %d", reverse);
 
     return 0;
 }
